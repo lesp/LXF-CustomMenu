@@ -17,12 +17,12 @@ L::::::::::::::::::::::LX:::::X       X:::::XF::::::::FF
 L::::::::::::::::::::::LX:::::X       X:::::XF::::::::FF                                                                                              
 LLLLLLLLLLLLLLLLLLLLLLLLXXXXXXX       XXXXXXXFFFFFFFFFFF"
 
-sleep 0.2
+sleep 2
      
 whiptail --title "LXF Raspberry Pi System Tools" --msgbox "Managing your Pi"\ "Since 2016" 10 40
 until [ "$answer" == "Exit" ]; do
  answer=$(whiptail --title "Main Menu" --menu "Choose an option" --ok-button "Select" --cancel-button "Exit" 20 78 14 \
- "Exit" "Return to the terminal." \
+ "Shutdown" "Turn Off Your Pi." \
  "IP" "Check your IP address." \
  "Disk Space" "How much space does your SD card have?" \
  "System Update" "Update your Raspberry Pi software." \
@@ -40,8 +40,10 @@ until [ "$answer" == "Exit" ]; do
   answer="Exit"
 fi
  echo $answer
-
- if [ "$answer" == "IP" ]
+ if [ "$answer" == "Shutdown" ]
+  then
+  sudo sync && sudo poweroff
+ elif [ "$answer" == "IP" ]
   then
   ip=$(hostname -I)
   echo $ip
