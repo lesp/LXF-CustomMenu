@@ -66,10 +66,10 @@ fi
   whiptail --title "Test Results" --msgbox "${test}" 19 90
  elif [ "$answer" == "Play Minecraft" ]
   then
-  echo "Minecraft"
+  minecraft-pi
  elif [ "$answer" == "Visit LXF" ]
   then
-  opera http://linuxformat.com
+  chromium-browser http://linuxformat.com
  else
  echo "Exit"
  fi
