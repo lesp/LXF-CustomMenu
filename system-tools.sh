@@ -42,7 +42,11 @@ fi
  echo $answer
  if [ "$answer" == "Shutdown" ]
   then
-  sudo sync && sudo poweroff
+   if (whiptail --title "System Shutdown" --yesno "Are you sure?" 10 60) then
+    sudo sync && sudo poweroff
+   else
+    whiptail --title "Shutdown Cancelled" --msgbox "System Shutdown Averted!"
+   fi
  elif [ "$answer" == "IP" ]
   then
   ip=$(hostname -I)
