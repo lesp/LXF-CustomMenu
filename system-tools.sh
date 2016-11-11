@@ -17,18 +17,28 @@ L::::::::::::::::::::::LX:::::X       X:::::XF::::::::FF
 L::::::::::::::::::::::LX:::::X       X:::::XF::::::::FF                                                                                              
 LLLLLLLLLLLLLLLLLLLLLLLLXXXXXXX       XXXXXXXFFFFFFFFFFF"
 
-sleep 2
+sleep 0.2
      
 whiptail --title "LXF Raspberry Pi System Tools" --msgbox "Managing your Pi"\ "Since 2016" 10 40
-until [ "$answer" == "<-- Back" ]; do
- answer=$(whiptail --title "Main Menu" --menu "Choose an option" 20 78 14 \
- "<-- Back" "Return to the main menu." \
+until [ "$answer" == "Exit" ]; do
+ answer=$(whiptail --title "Main Menu" --menu "Choose an option" --ok-button "Select" --cancel-button "Exit" 20 78 14 \
+ "Exit" "Return to the terminal." \
  "IP" "Check your IP address." \
  "Disk Space" "How much space does your SD card have?" \
  "System Update" "Update your Raspberry Pi software." \
  "Network Test" "Test that you can reach a website." \
  "Play Minecraft" "Play Minecraft, have fun!" \
  "Visit LXF" "Visit the Linux Format website!" ${value} 3>&1 1>&2 2>&3)
+ exitstatus=$?
+ echo "DEBUG"
+ echo $exitstatus
+ if [ $exitstatus = 0 ]; 
+  then
+  echo "Your chosen option:" $answer
+ else
+  echo "You chose Cancel."
+  answer="Exit"
+fi
  echo $answer
 
  if [ "$answer" == "IP" ]
