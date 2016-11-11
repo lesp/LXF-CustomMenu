@@ -45,7 +45,7 @@ fi
    if (whiptail --title "System Shutdown" --yesno "Are you sure?" 10 60) then
     sudo sync && sudo poweroff
    else
-    whiptail --title "Shutdown Cancelled" --msgbox "System Shutdown Averted!"
+    whiptail --title "Shutdown Cancelled" --msgbox "System Shutdown Averted!" 10 60
    fi
  elif [ "$answer" == "IP" ]
   then
