@@ -30,15 +30,13 @@ until [ "$answer" == "Exit" ]; do
  "Play Minecraft" "Play Minecraft, have fun!" \
  "Visit LXF" "Visit the Linux Format website!" ${value} 3>&1 1>&2 2>&3)
  exitstatus=$?
- echo "DEBUG"
- echo $exitstatus
  if [ $exitstatus = 0 ]; 
   then
   echo "Your chosen option:" $answer
  else
   echo "You chose Cancel."
   answer="Exit"
-fi
+ fi
  echo $answer
  if [ "$answer" == "Shutdown" ]
   then
